@@ -1,0 +1,146 @@
+#products {
+  background: #f9fafb;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.pricing-card:hover {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.pricing-card.featured {
+  border: 4px solid #dc2626;
+  box-shadow: 0 20px 25px rgba(220, 38, 38, 0.2);
+}
+
+.pricing-header {
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.pricing-header.basic {
+  background: linear-gradient(to bottom right, #374151, #1f2937);
+}
+
+.pricing-header.pro {
+  background: linear-gradient(to bottom right, #dc2626, #f97316);
+}
+
+.pricing-header.enterprise {
+  background: linear-gradient(to bottom right, #eab308, #f97316);
+}
+
+.pricing-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  color: white;
+}
+
+.pricing-header h3 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #dc2626;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.pricing-body {
+  padding: 2rem;
+}
+
+.pricing-price {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-price span {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.pricing-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.pricing-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #4b5563;
+}
+
+.check-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.pricing-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pricing-button.basic {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.pricing-button.basic:hover {
+  background: #d1d5db;
+}
+
+.pricing-button.pro {
+  background: #dc2626;
+  color: white;
+}
+
+.pricing-button.pro:hover {
+  background: #b91c1c;
+}
+
+.pricing-button.enterprise {
+  background: #f97316;
+  color: white;
+}
+
+.pricing-button.enterprise:hover {
+  background: #ea580c;
+}
+
+.pricing-card {
+  position: relative;
+}
