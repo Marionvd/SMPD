@@ -12,7 +12,7 @@
   let isMonitoring = $state(false);
   let status = $state("IDLE");
   let boxes = $state<number[][]>([]);
-  let description = $state("Ожидание запуска...");
+  let description = $state("Waiting to start...");
   let fireType = $state("");
 
   let applyingFlashClass = $state(false);
@@ -57,13 +57,13 @@
       }
       isMonitoring = true;
       status = "SAFE";
-      description = "Камера активна. Сканирование...";
+      description = "Camera is active. Scanning...";
 
       analysisInterval = setInterval(captureAndSend, 3000);
     } catch (err) {
       console.error("Camera access error:", err);
       alert(
-        "Не удалось получить доступ к камере. Проверьте разрешения браузера.",
+        "Camera access is required to use the scanner. Please allow camera permissions and try again.",
       );
     }
   }
@@ -77,7 +77,7 @@
       stream.getTracks().forEach((t: MediaStreamTrack) => t.stop());
     }
     status = "IDLE";
-    description = "Сканирование остановлено.";
+    description = "Scanner stopped.";
     fireType = "";
     boxes = [];
     applyingFlashClass = false;
@@ -106,7 +106,7 @@
             method: "POST",
             body: formData,
             headers: {
-              "ngrok-skip-browser-warning": "69420", // Секретный заголовок для ngrok
+              "ngrok-skip-browser-warning": "69420",
             },
           });
 
@@ -116,19 +116,19 @@
             // Логика Красной Вспышки при переходе в CRITICAL
             if (data.status === "CRITICAL" && status !== "CRITICAL") {
               applyingFlashClass = true;
-              setTimeout(() => (applyingFlashClass = false), 700); // Длительность вспышки
+              setTimeout(() => (applyingFlashClass = false), 700);
             }
 
             status = data.status || "SAFE";
             boxes = data.boxes || [];
 
             if (data.vlm) {
-              description = data.vlm.description || "Анализ завершен";
+              description = data.vlm.description || "Analysis completed";
               fireType = data.vlm.fire_type || "";
             }
           }
         } catch (e) {
-          console.error("Ошибка связи с API:", e);
+          console.error("Error connecting to API:", e);
         }
       },
       "image/jpeg",
@@ -247,7 +247,7 @@
   main::after {
     box-shadow: inset 0 0 55px -25px var(--status-color);
     animation: wave-2 2.5s infinite alternate ease-in-out;
-    opacity: 0.5; /* Уменьшили прозрачность */
+    opacity: 0.5;
   }
 
   main.is-idle {
